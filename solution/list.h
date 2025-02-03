@@ -84,7 +84,6 @@ namespace engr101 {
             }
         }
 
-        public: 
         public:
         class iterator {
             using value_type = T;
@@ -108,9 +107,7 @@ namespace engr101 {
             if (head == nullptr && tail == nullptr) {
                 head = tail = new node(t, nullptr);
             } else {
-                node *appended = new node(t, nullptr);
-                tail->forward = appended;
-                tail = appended;
+                tail = tail->forward = new node(t, nullptr);
             }
         }
 
