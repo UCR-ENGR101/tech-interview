@@ -34,7 +34,7 @@ namespace engr101 {
             public:
             iterator(node *n): n(n) {}
             iterator &operator++() { n = n->forward; return *this; }
-            iterator operator++(int) { iterator temp = *this; n = n.forward; return temp; }
+            iterator operator++(int) { iterator temp = *this; n = n->forward; return temp; }
 
             bool operator==(const iterator &b) { return n == b.n; }
             bool operator!=(const iterator &b) { return n != b.n; }
@@ -77,7 +77,7 @@ namespace engr101 {
         forward_list(): head(nullptr), tail(nullptr) {}
         forward_list(std::initializer_list<T> l): head(nullptr), tail(nullptr) {
             for (auto i = l.begin(); i != l.end(); ++i) {
-                push_front(*i);
+                push_back(*i);
             }
         }
 
@@ -101,12 +101,13 @@ namespace engr101 {
         };
 
         public:
-        void push_front(const T &t) {
+        void push_back(const T &t) {
             if (head == nullptr && tail == nullptr) {
                 head = tail = new node(t, nullptr);
             } else {
-                node *appended = new node(t, head);
-                head = appended;
+                node *appended = new node(t, nullptr);
+                tail->forward = appended;
+                tail = appended;
             }
         }
 

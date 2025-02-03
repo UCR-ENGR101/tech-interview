@@ -36,7 +36,7 @@ int main() {
     fl2.reverse();
     cout << "Empty singly linked list after reverse" << endl;
     std::for_each(fl2.begin(), fl2.end(), [](int i) { cout << i << endl; });
-    fl2.push_front(1);
+    fl2.push_back(1);
     fl2.reverse();
     cout << "Single item singly linked list after reverse" << endl;
     std::for_each(fl2.begin(), fl2.end(), [](int i) { cout << i << endl; });
