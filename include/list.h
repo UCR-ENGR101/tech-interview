@@ -46,9 +46,7 @@ namespace engr101 {
             if (head == nullptr && tail == nullptr) {
                 head = tail = new node(t, nullptr, nullptr);
             } else {
-                node *appended = new node(t, nullptr, tail);
-                tail->forward = appended;
-                tail = appended;
+                tail = tail->forward = new node(t, nullptr, tail);
             }        
         }
 
