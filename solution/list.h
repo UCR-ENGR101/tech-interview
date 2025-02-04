@@ -112,8 +112,7 @@ namespace engr101 {
         void reverse() {
             if (head == nullptr && tail == nullptr) return;
 
-            node *prev = nullptr, *curr = head, *next = head->forward;
-            while (curr != nullptr) {
+            for (node *prev = nullptr, *curr = head, *next = head->forward; curr != nullptr;) {
                 curr->forward = prev;
                 prev = curr;
                 curr = next;
